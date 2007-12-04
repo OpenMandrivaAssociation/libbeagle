@@ -14,6 +14,7 @@ License: MIT/Apache License
 Group: System/Libraries
 Url: http://beagle-project.org/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires: gtk-doc
 BuildRequires: glib2-devel
 BuildRequires: pygtk2.0-devel
 
@@ -56,7 +57,7 @@ Install this for python extensions to Beagle.
 %setup -q 
 
 %build
-%configure2_5x
+%configure2_5x --enable-gtk-doc
 %make
 
 %install
