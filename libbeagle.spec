@@ -1,6 +1,6 @@
 %define name libbeagle
 %define version 0.3.0
-%define release %mkrel 1
+%define release %mkrel 2
 %define major 1
 %define libname %mklibname beagle %major
 %define develname %mklibname -d beagle
@@ -46,7 +46,7 @@ Lucene.Net.
 %package -n python-beagle
 Group: Development/Python
 Summary: Python module for writing Beagle extensions
-Requires: %name = %version
+Requires: %libname = %version
 Requires: pygtk2.0
 %description -n python-beagle
 Beagle is an indexing sub-system and search aggregator built on top of
