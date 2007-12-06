@@ -1,6 +1,6 @@
 %define name libbeagle
 %define version 0.3.0
-%define release %mkrel 2
+%define release %mkrel 3
 %define major 1
 %define libname %mklibname beagle %major
 %define develname %mklibname -d beagle
@@ -36,8 +36,8 @@ Lucene.Net.
 Group: Development/C
 Summary: Development library of beagle
 Requires: %libname = %version
-Provides: lib%name-devel = %version-%release
-Obsoletes: %mklibname -d %name 0
+Provides: libbeagle-devel = %version-%release
+Obsoletes: %mklibname -d beagle 0
 
 %description -n %develname
 Beagle is an indexing sub-system and search aggregator built on top of
