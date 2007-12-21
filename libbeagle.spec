@@ -13,6 +13,7 @@ Source0: http://ftp.gnome.org/pub/GNOME/sources/beagle/%{name}-%{version}.tar.bz
 License: MIT/Apache License
 Group: System/Libraries
 Url: http://beagle-project.org/
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gtk-doc
 BuildRequires: glib2-devel
 BuildRequires: pygtk2.0-devel
