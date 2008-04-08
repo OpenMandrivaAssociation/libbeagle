@@ -1,6 +1,6 @@
 %define name libbeagle
-%define version 0.3.0
-%define release %mkrel 3
+%define version 0.3.5.1
+%define release %mkrel 1
 %define major 1
 %define libname %mklibname beagle %major
 %define develname %mklibname -d beagle
