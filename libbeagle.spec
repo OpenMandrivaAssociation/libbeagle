@@ -68,8 +68,12 @@ rm -f %buildroot%_libdir/gtk-2.0/*/filesystems/libbeaglechooserhack*a \
       %buildroot%_libdir/%name/*a %buildroot%_libdir/python%pyver/site-packages/*a
 
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %clean
 rm -rf %{buildroot}
