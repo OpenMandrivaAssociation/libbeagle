@@ -1,6 +1,6 @@
 %define name libbeagle
 %define version 0.3.5.1
-%define release %mkrel 2
+%define release %mkrel 3
 %define major 1
 %define libname %mklibname beagle %major
 %define develname %mklibname -d beagle
@@ -10,6 +10,9 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://ftp.gnome.org/pub/GNOME/sources/beagle/%{name}-%{version}.tar.bz2
+# https://qa.mandriva.com/show_bug.cgi?id=44532
+# http://bugzilla.gnome.org/show_bug.cgi?id=561204
+Patch: libbeagle-0.3.5.1-limit-requests.patch
 License: MIT/Apache License
 Group: System/Libraries
 Url: http://beagle-project.org/
@@ -55,6 +58,7 @@ Install this for python extensions to Beagle.
 
 %prep
 %setup -q 
+%patch -p2
 
 %build
 %configure2_5x --enable-gtk-doc
