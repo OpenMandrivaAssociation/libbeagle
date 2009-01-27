@@ -16,7 +16,7 @@ License: MIT/Apache License
 Group: System/Libraries
 Url: http://beagle-project.org/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: gtk-doc
+BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: glib2-devel
 BuildRequires: pygtk2.0-devel
 
@@ -69,6 +69,11 @@ autoreconf
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+
+#gw bug in 0.3.9
+%if %_lib != lib
+mv %buildroot%_prefix/lib/python%pyver %buildroot%_libdir
+%endif
 
 rm -f %buildroot%_libdir/gtk-2.0/*/filesystems/libbeaglechooserhack*a \
       %buildroot%_libdir/%name/*a %buildroot%_libdir/python%pyver/site-packages/*a
