@@ -1,6 +1,6 @@
 %define name libbeagle
-%define version 0.3.5.1
-%define release %mkrel 4
+%define version 0.3.9
+%define release %mkrel 1
 %define major 1
 %define libname %mklibname beagle %major
 %define develname %mklibname -d beagle
@@ -9,12 +9,9 @@ Summary: Beagle integration library
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://ftp.gnome.org/pub/GNOME/sources/beagle/%{name}-%{version}.tar.bz2
-# https://qa.mandriva.com/show_bug.cgi?id=44532
-# http://bugzilla.gnome.org/show_bug.cgi?id=561204
-Patch0: libbeagle-0.3.5.1-limit-requests.patch
+Source0: http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Patch1: libbeagle-0.3.5.1-fix-str-fmt.patch
-Patch2: libbeagle-0.3.5.1-linkage.patch
+Patch2: libbeagle-0.3.9-linkage.patch
 License: MIT/Apache License
 Group: System/Libraries
 Url: http://beagle-project.org/
@@ -60,9 +57,10 @@ Install this for python extensions to Beagle.
 
 %prep
 %setup -q 
-%patch0 -p2
 %patch1 -p0
-%patch2 -p0
+%patch2 -p1
+#gw needed by patch 2
+autoreconf
 
 %build
 %configure2_5x --enable-gtk-doc
