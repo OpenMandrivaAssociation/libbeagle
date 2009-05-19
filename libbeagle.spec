@@ -12,6 +12,7 @@ Release: %{release}
 Source0: http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Patch1: libbeagle-0.3.5.1-fix-str-fmt.patch
 Patch2: libbeagle-0.3.9-linkage.patch
+Patch3: libbeagle-0.3.9-remove-duplicated-file-from-makefile.patch
 License: MIT/Apache License
 Group: System/Libraries
 Url: http://beagle-project.org/
@@ -59,8 +60,9 @@ Install this for python extensions to Beagle.
 %setup -q 
 %patch1 -p0
 %patch2 -p1
-#gw needed by patch 2
-autoreconf
+%patch3 -p1
+#gw needed by patch 2 and 3
+autoreconf -fi
 
 %build
 %configure2_5x --enable-gtk-doc
