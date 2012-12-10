@@ -1,9 +1,10 @@
 %define name libbeagle
 %define version 0.3.9
-%define release %mkrel 5
+%define release 5
 %define major 1
 %define libname %mklibname beagle %major
 %define develname %mklibname -d beagle
+%define pyver 2.7
 
 Summary: Beagle integration library
 Name: %{name}
@@ -16,7 +17,6 @@ Patch3: libbeagle-0.3.9-remove-duplicated-file-from-makefile.patch
 License: MIT/Apache License
 Group: System/Libraries
 Url: http://beagle-project.org/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: glib2-devel
 BuildRequires: pygtk2.0-devel
@@ -69,7 +69,6 @@ autoreconf -fi
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 #gw bug in 0.3.9
@@ -81,22 +80,12 @@ rm -f %buildroot%_libdir/gtk-2.0/*/filesystems/libbeaglechooserhack*a \
       %buildroot%_libdir/%name/*a %buildroot%_libdir/python%pyver/site-packages/*a
 
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files -n %libname
-%defattr(-,root,root)
+%doc ChangeLog AUTHORS README INSTALL
 %_libdir/lib*.so.%{major}*
 
 %files -n %develname
-%defattr(-,root,root)
+%doc ChangeLog AUTHORS README INSTALL
 %_libdir/lib*.so
 %attr(644,root,root) %_libdir/lib*a
 %_includedir/libbeagle/
@@ -104,7 +93,9 @@ rm -rf %{buildroot}
 %_datadir/gtk-doc/html/beagle/
 
 %files -n python-beagle
-%defattr(-,root,root)
+%doc ChangeLog AUTHORS README INSTALL
 %py_platsitedir/*beagle*
+
+
 
 
