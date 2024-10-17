@@ -16,7 +16,7 @@ Patch2: libbeagle-0.3.9-linkage.patch
 Patch3: libbeagle-0.3.9-remove-duplicated-file-from-makefile.patch
 License: MIT/Apache License
 Group: System/Libraries
-Url: http://beagle-project.org/
+Url: https://beagle-project.org/
 BuildRequires: gtk-doc docbook-dtd412-xml
 BuildRequires: glib2-devel
 BuildRequires: pygtk2.0-devel
